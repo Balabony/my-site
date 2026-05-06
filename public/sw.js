@@ -98,6 +98,7 @@ self.addEventListener('fetch', (event) => {
         caches.match(event.request).then((cached) => {
           if (cached) return cached
           if (event.request.destination === 'document') return caches.match('/')
+          return new Response('', { status: 404 })
         })
       )
   )
