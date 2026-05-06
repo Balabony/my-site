@@ -36,7 +36,7 @@ CREATE TABLE content (
   changes       JSONB,
   published_version TEXT,
   ai_report     TEXT,
-  ai_score      NUMERIC,
+  ai_score      TEXT,
   admin_notes   TEXT,
   duration_minutes INTEGER,
 
