@@ -21,9 +21,10 @@ interface Props {
   text: string
   onApplyTeaser: (teaser: string) => void
   onApplyImprovedText: (text: string) => void
+  onAnalysisComplete?: (analysis: AnalysisResult) => void
 }
 
-export default function GeminiAnalyzer({ text, onApplyTeaser, onApplyImprovedText }: Props) {
+export default function GeminiAnalyzer({ text, onApplyTeaser, onApplyImprovedText, onAnalysisComplete }: Props) {
   const [loading,         setLoading]         = useState(false)
   const [error,           setError]           = useState('')
   const [analysis,        setAnalysis]        = useState<AnalysisResult | null>(null)
@@ -60,6 +61,7 @@ export default function GeminiAnalyzer({ text, onApplyTeaser, onApplyImprovedTex
       const data = await res.json() as AnalysisResult & { error?: string }
       if (!res.ok || data.error) { setError(data.error ?? 'Помилка аналізу'); return }
       setAnalysis(data)
+      onAnalysisComplete?.(data)
     } catch {
       setError("Помилка з'єднання з API")
     } finally {

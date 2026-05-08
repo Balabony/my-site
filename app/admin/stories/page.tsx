@@ -107,6 +107,7 @@ export default function StoriesAdminPage() {
   const [hasAudio,     setHasAudio]     = useState(false)
   const [publishState, setPublishState] = useState<'idle' | 'loading' | 'done' | 'error'>('idle')
   const [publishMsg,   setPublishMsg]   = useState('')
+  const [analysisData, setAnalysisData] = useState<any>(null)
 
   const fileRef  = useRef<HTMLInputElement>(null)
   const musicRef = useRef<HTMLAudioElement>(null)
@@ -209,7 +210,7 @@ export default function StoriesAdminPage() {
       const res = await fetch('/api/admin/series', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ title, season, episode, description: summary, hasAudio }),
+        body:    JSON.stringify({ title, season, episode, description: summary, hasAudio, analyzeReport: analysisData }),
       })
       const data = await res.json() as { message?: string; error?: string }
       if (!res.ok) { setPublishMsg(data.error ?? 'Помилка'); setPublishState('error'); return }
@@ -397,6 +398,7 @@ export default function StoriesAdminPage() {
             text={text}
             onApplyTeaser={(teaser) => setSummary(teaser)}
             onApplyImprovedText={(improved) => setText(improved)}
+            onAnalysisComplete={setAnalysisData}
           />
         </SectionCard>
 
