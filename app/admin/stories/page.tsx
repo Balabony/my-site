@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useRef, useCallback } from 'react'
-import { useRouter } from 'next/navigation'
 import GeminiAnalyzer from '@/components/admin/GeminiAnalyzer'
 import type { AnalysisResult } from '@/components/admin/GeminiAnalyzer'
 
@@ -71,8 +70,6 @@ function fmtDur(s: number) {
 // ── Main page ────────────────────────────────────────────────────────────────
 
 export default function StoriesAdminPage() {
-  const router = useRouter()
-
   // story fields
   const [title,        setTitle]        = useState('')
   const [season,       setSeason]       = useState('')
@@ -277,54 +274,6 @@ export default function StoriesAdminPage() {
     <div style={{ minHeight: '100vh', background: NAVY_DEEP, color: '#f5f0e8', fontFamily: FONT, padding: '24px 16px 80px' }}>
       <audio ref={musicRef} onEnded={() => setIsAudioPlaying(false)} />
       <div style={{ maxWidth: 720, margin: '0 auto' }}>
-
-        {/* ── Admin header ── */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 28, paddingBottom: 20, borderBottom: '0.5px solid rgba(255,255,255,0.07)' }}>
-          <div style={{ width: 38, height: 38, borderRadius: 10, background: GOLD, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M4 4 L4 16 L10 13 L16 16 L16 4 Z" stroke={NAVY_DEEP} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-              <line x1="7" y1="8" x2="13" y2="8" stroke={NAVY_DEEP} strokeWidth="1.4" strokeLinecap="round"/>
-              <line x1="7" y1="11" x2="11" y2="11" stroke={NAVY_DEEP} strokeWidth="1.4" strokeLinecap="round"/>
-            </svg>
-          </div>
-          <div>
-            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 2, color: GOLD, textTransform: 'uppercase', marginBottom: 2, fontFamily: FONT }}>Адмін панель</div>
-            <div style={{ fontSize: 20, fontWeight: 700, color: '#f5f0e8', fontFamily: FONT }}>Редактор історій</div>
-          </div>
-          <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 12, fontFamily: FONT }}>
-            {wordCount > 0 && <span style={{ fontSize: 12, color: GOLD }}>{wordCount} слів</span>}
-            <button
-              onClick={() => router.push('/admin/batch-review')}
-              style={{ fontSize: 12, fontWeight: 600, color: '#34d399', background: 'rgba(52,211,153,0.1)', border: '1px solid rgba(52,211,153,0.25)', borderRadius: 8, padding: '6px 12px', cursor: 'pointer', fontFamily: FONT }}
-            >
-              📋 Пакет
-            </button>
-            <button
-              onClick={() => router.push('/admin/review')}
-              style={{ fontSize: 12, fontWeight: 600, color: '#818cf8', background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.25)', borderRadius: 8, padding: '6px 12px', cursor: 'pointer', fontFamily: FONT }}
-            >
-              ✍️ Редактор
-            </button>
-            <button
-              onClick={() => router.push('/admin/series-list')}
-              style={{ fontSize: 12, fontWeight: 600, color: '#c8d4e8', background: 'rgba(200,212,232,0.07)', border: '1px solid rgba(200,212,232,0.2)', borderRadius: 8, padding: '6px 12px', cursor: 'pointer', fontFamily: FONT }}
-            >
-              📄 Список
-            </button>
-            <button
-              onClick={() => router.push('/admin/reviews')}
-              style={{ fontSize: 12, fontWeight: 600, color: GOLD, background: 'rgba(240,165,0,0.1)', border: '1px solid rgba(240,165,0,0.25)', borderRadius: 8, padding: '6px 12px', cursor: 'pointer', fontFamily: FONT }}
-            >
-              ⭐ Відгуки
-            </button>
-            <button
-              onClick={async () => { await fetch('/api/admin/logout', { method: 'POST' }); router.push('/admin/login') }}
-              style={{ fontSize: 12, fontWeight: 600, color: '#8899bb', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 8, padding: '6px 12px', cursor: 'pointer', fontFamily: FONT }}
-            >
-              Вийти
-            </button>
-          </div>
-        </div>
 
         {/* ━━━ SECTION 1 — Story Details ━━━ */}
         <SectionCard n={1} title="Деталі серії">
