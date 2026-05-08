@@ -62,6 +62,7 @@ export default function AdminHeader({ icon, title }: AdminHeaderProps) {
         <Link href="/admin/reviews"      style={navBtnStyle}>Відгуки</Link>
         <Link href="/admin/editors"      style={navBtnStyle}>Редактори</Link>
         <Link href="/admin/batch-review" style={navBtnStyle}>Пакетна перевірка</Link>
+        <Link href="/admin/review"       style={navBtnStyle}>AI-рецензія</Link>
         <Link href="/admin/analytics"    style={navBtnStyle}>Аналітика</Link>
         <button onClick={handleLogout}   style={logoutBtnStyle}>Вийти</button>
       </div>
