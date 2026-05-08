@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
 import type { AnalysisResult } from '@/components/admin/GeminiAnalyzer'
 
 const FONT      = "'Montserrat', Arial, sans-serif"
@@ -36,8 +35,6 @@ function ratingColor(r: number | null | undefined): string {
 }
 
 export default function SeriesListPage() {
-  const router = useRouter()
-
   const [series,       setSeries]       = useState<SeriesRow[]>([])
   const [loading,      setLoading]      = useState(true)
   const [error,        setError]        = useState('')
@@ -87,34 +84,6 @@ export default function SeriesListPage() {
   return (
     <div style={{ minHeight: '100vh', background: NAVY_DEEP, color: '#f5f0e8', fontFamily: FONT, padding: '24px 16px 80px' }}>
       <div style={{ maxWidth: 720, margin: '0 auto' }}>
-
-        {/* Header */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24, paddingBottom: 20, borderBottom: '0.5px solid rgba(255,255,255,0.07)' }}>
-          <div style={{ width: 38, height: 38, borderRadius: 10, background: GOLD, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <rect x="2" y="3" width="16" height="14" rx="2" stroke={NAVY_DEEP} strokeWidth="1.6"/>
-              <path d="M5 7h10M5 10h7M5 13h5" stroke={NAVY_DEEP} strokeWidth="1.4" strokeLinecap="round"/>
-            </svg>
-          </div>
-          <div>
-            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 2, color: GOLD, textTransform: 'uppercase', marginBottom: 2, fontFamily: FONT }}>Адмін панель</div>
-            <div style={{ fontSize: 20, fontWeight: 700, color: '#f5f0e8', fontFamily: FONT }}>Список серій</div>
-          </div>
-          <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 10 }}>
-            <button
-              onClick={() => router.push('/admin/stories')}
-              style={{ fontSize: 12, fontWeight: 600, color: GOLD, background: 'rgba(240,165,0,0.1)', border: '1px solid rgba(240,165,0,0.25)', borderRadius: 8, padding: '6px 12px', cursor: 'pointer', fontFamily: FONT }}
-            >
-              ← Редактор серій
-            </button>
-            <button
-              onClick={async () => { await fetch('/api/admin/logout', { method: 'POST' }); router.push('/admin/login') }}
-              style={{ fontSize: 12, fontWeight: 600, color: '#8899bb', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 8, padding: '6px 12px', cursor: 'pointer', fontFamily: FONT }}
-            >
-              Вийти
-            </button>
-          </div>
-        </div>
 
         {/* Filters */}
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 20 }}>
