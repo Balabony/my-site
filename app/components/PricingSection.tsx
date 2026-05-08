@@ -28,11 +28,13 @@ function fmtCountdown(s: number): string {
 }
 
 function FreeViewTimer() {
-  const [secs, setSecs] = useState<number>(() => getSecondsLeft())
+  const [secs, setSecs] = useState<number>(CYCLE_MS / 1000)
+  const [hydrated, setHydrated] = useState(false)
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
   useEffect(() => {
     setSecs(getSecondsLeft())
+    setHydrated(true)
     timerRef.current = setInterval(() => {
       setSecs(getSecondsLeft())
     }, 1000)
@@ -49,7 +51,7 @@ function FreeViewTimer() {
         fontVariantNumeric: 'tabular-nums', letterSpacing: 1,
         fontFamily: "'Montserrat', Arial, sans-serif",
       }}>
-        {fmtCountdown(secs)}
+        {hydrated ? fmtCountdown(secs) : '—:—:—'}
       </span>
       <span style={{ fontSize: 18, color: '#FFFFFF' }}>— або обери план</span>
     </div>
