@@ -62,7 +62,9 @@ export default async function StoryPage({ params }: { params: Promise<{ id: stri
 
   const wordCount = body.trim().split(/\s+/).length
   const readMin   = Math.ceil(wordCount / 180)
-  const date      = new Date(story.approved_at).toLocaleDateString('uk-UA', { day: 'numeric', month: 'long', year: 'numeric' })
+  const date      = story.approved_at
+    ? new Date(story.approved_at).toLocaleDateString('uk-UA', { day: 'numeric', month: 'long', year: 'numeric' })
+    : ''
 
   return (
     <div style={{ minHeight: '100vh', background: NAVY_DEEP, color: '#f5f0e8', fontFamily: FONT }}>
