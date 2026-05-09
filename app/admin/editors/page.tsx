@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
 
 const FONT = "'Montserrat', Arial, sans-serif"
 const GOLD = '#f0a500'
@@ -27,7 +26,6 @@ interface EditorMutationResponse {
 }
 
 export default function EditorsPage() {
-  const router = useRouter()
   const [editors, setEditors] = useState<Editor[]>([])
   const [loading, setLoading] = useState(true)
   const [name, setName] = useState('')
@@ -96,34 +94,6 @@ export default function EditorsPage() {
   return (
     <div style={{ minHeight: '100vh', background: NAVY_DEEP, color: '#f5f0e8', fontFamily: FONT, padding: '24px 16px 80px' }}>
       <div style={{ maxWidth: 700, margin: '0 auto' }}>
-
-        {/* Header */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 28, paddingBottom: 20, borderBottom: '0.5px solid rgba(255,255,255,0.07)' }}>
-          <div style={{ width: 38, height: 38, borderRadius: 10, background: GOLD, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <circle cx="10" cy="7" r="3" stroke="#0a1628" strokeWidth="1.6"/>
-              <path d="M3 17c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="#0a1628" strokeWidth="1.6" strokeLinecap="round"/>
-            </svg>
-          </div>
-          <div>
-            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 2, color: GOLD, textTransform: 'uppercase', marginBottom: 2 }}>Адмін панель</div>
-            <div style={{ fontSize: 20, fontWeight: 700, color: '#f5f0e8' }}>Редактори</div>
-          </div>
-          <div style={{ marginLeft: 'auto', display: 'flex', gap: 10 }}>
-            <button
-              onClick={() => router.push('/admin/batch-review')}
-              style={{ fontSize: 12, fontWeight: 600, color: GOLD, background: 'rgba(240,165,0,0.1)', border: '1px solid rgba(240,165,0,0.25)', borderRadius: 8, padding: '6px 12px', cursor: 'pointer', fontFamily: FONT }}
-            >
-              ← Пакетна перевірка
-            </button>
-            <button
-              onClick={async () => { await fetch('/api/admin/logout', { method: 'POST' }); router.push('/admin/login') }}
-              style={{ fontSize: 12, fontWeight: 600, color: '#8899bb', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 8, padding: '6px 12px', cursor: 'pointer', fontFamily: FONT }}
-            >
-              Вийти
-            </button>
-          </div>
-        </div>
 
         {/* Messages */}
         {successMsg && (
