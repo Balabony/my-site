@@ -215,17 +215,6 @@ export default function AnalyticsPage() {
     <main style={{ minHeight: '100vh', background: '#0a1628', padding: '32px 24px 80px', fontFamily: FONT }}>
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
 
-        {/* Header */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 32, flexWrap: 'wrap', gap: 12 }}>
-          <div>
-            <a href="/" style={{ fontFamily: "'Comfortaa', cursive", fontSize: 20, fontWeight: 700, color: GOLD, textDecoration: 'none' }}>
-              Balabony<sup style={{ fontSize: 8 }}>®</sup>
-            </a>
-            <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', marginTop: 2, letterSpacing: 1.5, textTransform: 'uppercase' }}>Аналітика</div>
-          </div>
-          <a href="/admin/stories" style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', textDecoration: 'none' }}>← Адмін панель</a>
-        </div>
-
         {/* Stats row */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: 12, marginBottom: 24 }}>
           <StatCard label="Анкет"          value={surveys.length} />
