@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 
 const FONT      = "'Montserrat', Arial, sans-serif"
 const GOLD      = '#f0a500'
@@ -56,7 +55,6 @@ const SCORE_ICONS: Record<string, string> = {
 }
 
 export default function ReviewPage() {
-  const router = useRouter()
   const [text,         setText]         = useState('')
   const [reviewLoading, setReviewLoading] = useState(false)
   const [reviewError,   setReviewError]   = useState('')
@@ -115,35 +113,6 @@ export default function ReviewPage() {
   return (
     <div style={{ minHeight: '100vh', background: NAVY_DEEP, color: '#f5f0e8', fontFamily: FONT, padding: '24px 16px 80px' }}>
       <div style={{ maxWidth: 760, margin: '0 auto' }}>
-
-        {/* Header */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 28, paddingBottom: 20, borderBottom: '0.5px solid rgba(255,255,255,0.07)' }}>
-          <div style={{ width: 38, height: 38, borderRadius: 10, background: GOLD, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M3 5h14M3 10h10M3 15h7" stroke={NAVY_DEEP} strokeWidth="1.8" strokeLinecap="round"/>
-              <circle cx="16" cy="14" r="3" stroke={NAVY_DEEP} strokeWidth="1.5"/>
-              <path d="M18.5 16.5l1.5 1.5" stroke={NAVY_DEEP} strokeWidth="1.5" strokeLinecap="round"/>
-            </svg>
-          </div>
-          <div>
-            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: 2, color: GOLD, textTransform: 'uppercase', marginBottom: 2, fontFamily: FONT }}>Адмін панель</div>
-            <div style={{ fontSize: 20, fontWeight: 700, color: '#f5f0e8', fontFamily: FONT }}>Редактор серіалу</div>
-          </div>
-          <div style={{ marginLeft: 'auto', display: 'flex', gap: 10 }}>
-            <button
-              onClick={() => router.push('/admin/stories')}
-              style={{ fontSize: 12, fontWeight: 600, color: GOLD, background: 'rgba(240,165,0,0.1)', border: '1px solid rgba(240,165,0,0.25)', borderRadius: 8, padding: '6px 12px', cursor: 'pointer', fontFamily: FONT }}
-            >
-              ← Редактор
-            </button>
-            <button
-              onClick={async () => { await fetch('/api/admin/logout', { method: 'POST' }); router.push('/admin/login') }}
-              style={{ fontSize: 12, fontWeight: 600, color: '#8899bb', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 8, padding: '6px 12px', cursor: 'pointer', fontFamily: FONT }}
-            >
-              Вийти
-            </button>
-          </div>
-        </div>
 
         {/* Text input */}
         <div style={{ background: NAVY, borderRadius: 16, padding: '20px 18px', border: '0.5px solid rgba(255,255,255,0.07)', marginBottom: 20 }}>
