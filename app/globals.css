@@ -67,3 +67,13 @@ body {
   .hero-nav-divider { display: none !important; }
   .hero-nav-link { font-size: 11px !important; letter-spacing: 1.2px !important; }
 }
+
+
+/* Platforms cards mobile adaptation */
+@media (max-width: 480px) {
+  .platforms-card {
+    padding: 12px 14px !important;
+    min-width: 120px !important;
+    gap: 8px !important;
+  }
+}

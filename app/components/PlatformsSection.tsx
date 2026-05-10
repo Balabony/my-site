@@ -55,7 +55,7 @@ export default function PlatformsSection() {
       </div>
       <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
         {platforms.map(p => (
-          <a key={p.name} href={p.href} target="_blank" rel="noreferrer" style={{
+          <a key={p.name} className="platforms-card" href={p.href} target="_blank" rel="noreferrer" style={{
             background: p.bg, border: '1.5px solid #f5a623', borderRadius: 14,
             padding: '16px 18px', display: 'flex', alignItems: 'center', gap: 12,
             textDecoration: 'none', color: 'inherit', flex: 1, minWidth: 140
