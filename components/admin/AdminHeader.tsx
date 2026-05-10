@@ -47,6 +47,8 @@ export default function AdminHeader({ icon, title }: AdminHeaderProps) {
     { href: '/admin/batch-review', label: 'Пакет перегляд' },
     { href: '/admin/review',       label: 'AI-Перегляд' },
     { href: '/admin/analytics',    label: 'Аналітика' },
+    { href: '/admin/stories1',     label: 'Авторські' },
+    { href: '/admin/editorial',    label: 'Редакція' },
   ]
 
   return (
@@ -74,7 +76,7 @@ export default function AdminHeader({ icon, title }: AdminHeaderProps) {
         </div>
       </div>
 
-      <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 10 }}>
+      <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
         {navItems.map(item => (
           <Link
             key={item.href}
