@@ -8,8 +8,6 @@ import PlatformsSection from './components/PlatformsSection'
 import PricingSection from './components/PricingSection'
 import AudioPlayer from './components/AudioPlayer'
 import Footer from './components/Footer'
-import NeuroMusicSection from './components/NeuroMusicSection'
-import KaraokeSection from './components/KaraokeSection'
 import LongevityClubSection from './components/LongevityClubSection'
 import FairytalesSection from './components/FairytalesSection'
 import ResumeBanner from './components/ResumeBanner'
@@ -116,9 +114,7 @@ export default function HomePage() {
         <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.15)', margin: '20px 0' }} />
         <PricingSection />
         <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.15)', margin: '20px 0' }} />
-        <KaraokeSection />
         <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.15)', margin: '20px 0' }} />
-        <div id="neuro-music"><NeuroMusicSection /></div>
         <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.15)', margin: '20px 0' }} />
         <div id="longevity-club"><LongevityClubSection /></div>
         <div id="fairytales"><FairytalesSection /></div>
