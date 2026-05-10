@@ -17,6 +17,7 @@ export default function Hero() {
               { label: 'ІСТОРІЇ', href: '#reader' },
               { label: 'СЕРІАЛИ', href: '#series' },
               { label: 'ІГРИ',    href: '#longevity-club' },
+      { label: 'КАЗКИ', href: '#fairytales' },
             ].map((item, i) => (
               <span key={item.label} style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
                 {i > 0 && <span style={{ color: '#f5a623', opacity: 0.4, fontSize: 16 }}>·</span>}
