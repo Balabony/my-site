@@ -36,3 +36,7 @@ next-env.d.ts
 
 # local test scripts (not for prod)
 scripts/test-parse-balabony.mjs
+
+scripts/audit-cache/
+scripts/audit-sequence-report.md
+scripts/audit-sequence-report.json
