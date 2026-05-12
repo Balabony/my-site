@@ -85,7 +85,7 @@ export default function SeriesStrip({ series }: { series: SeriesCard[] }) {
                   {/* Cover — clickable, clean photo + white border via CSS outline */}
                   <div
                     onClick={() => toggle(s.id)}
-                    style={{ position: 'relative', flexShrink: 0, width: 100, cursor: 'pointer' }}
+                    style={{ position: 'relative', flexShrink: 0, width: 100, aspectRatio: '1 / 1', cursor: 'pointer' }}
                   >
                     <img
                       src={s.coverUrl}
