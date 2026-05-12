@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
@@ -84,7 +84,7 @@ const viewAllWrapperStyle: React.CSSProperties = {
   maxWidth: 1100,
   margin: '0 auto',
   padding: '0 20px 24px',
-  textAlign: 'right',
+  textAlign: 'center',
 }
 
 export default function HomePage() {
