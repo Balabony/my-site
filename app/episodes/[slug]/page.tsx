@@ -113,7 +113,7 @@ export default async function EpisodePage({ params }: { params: Promise<{ slug: 
         <div style={{ height: 1, background: 'linear-gradient(to right, transparent, rgba(240,165,0,0.4), transparent)', marginBottom: 36 }} />
 
         {/* Episode body */}
-        <EpisodeBody html={escapeHtml(body)} fontFamily={FONT} />
+        <EpisodeBody html={formatEpisodeText(body)} fontFamily={FONT} />
 
         {/* Footer */}
         <div style={{ marginTop: 52, paddingTop: 24, borderTop: '0.5px solid rgba(255,255,255,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
@@ -133,11 +133,76 @@ export default async function EpisodePage({ params }: { params: Promise<{ slug: 
   )
 }
 
-function escapeHtml(str: string): string {
+// Список персонажів-носіїв реплік. При додаванні нових — просто розширити масив.
+const CHARACTERS = [
+  'Панас', 'Ганя', 'Максим', 'Стьопа', 'Орися', 'Віталій',
+  'Люба', 'Микола', 'Мотря', 'Семен', 'Степан', 'Борько',
+  'Дільничний Микола', 'Зять Віталій', 'Сусід Стьопа',
+  'Баба Ганя', 'Баба Орися', 'Баба Мотря',
+  'Дід Панас', 'Онук Максим',
+]
+// Сортуємо за спаданням довжини, щоб «Дід Панас» матчилось раніше за «Панас»
+const CHAR_PATTERN = CHARACTERS
+  .sort((a, b) => b.length - a.length)
+  .map(escapeRegex)
+  .join('|')
+const SPEAKER_REGEX = new RegExp(`^(${CHAR_PATTERN}):\\s`)
+
+function escapeRegex(s: string): string {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
+
+function escapeHtmlChars(str: string): string {
   return str
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
-    .replace(/\n/g, '<br/>')
+}
+
+// Перетворює сирий текст серії на HTML:
+// 1) екранує спецсимволи
+// 2) рядки що починаються з «Ім'я:» оборачує у <p class="speaker">
+//    де ім'я з двокрапкою виділене золотим жирним
+// 3) звичайні абзаци в <p class="narrative">
+// 4) подвійний порожній рядок = розділювач сцен (більший відступ)
+function formatEpisodeText(raw: string): string {
+  // Розбиваємо на блоки по подвійному переносу (сцени)
+  // Всередині сцени блоки розділені одинарним переносом — то абзаци/репліки
+  const scenes = raw.split(/\n{2,}/)
+
+  const renderedScenes = scenes.map((scene, sceneIdx) => {
+    const paragraphs = scene.split(/\n/).filter(p => p.trim().length > 0)
+
+    const renderedParagraphs = paragraphs.map(p => {
+      const trimmed = p.trim()
+      const match = trimmed.match(SPEAKER_REGEX)
+
+      if (match) {
+        const speaker = match[1]
+        const rest = trimmed.slice(match[0].length)
+        return `<p class="speaker"><strong style="color:${GOLD};font-weight:700">${escapeHtmlChars(speaker)}:</strong> ${escapeHtmlChars(rest)}</p>`
+      }
+
+      return `<p class="narrative">${escapeHtmlChars(trimmed)}</p>`
+    }).join('')
+
+    // Додаємо клас сцени тільки для не-першої сцени (відступ ЗВЕРХУ)
+    const sceneClass = sceneIdx === 0 ? 'scene scene-first' : 'scene'
+    return `<div class="${sceneClass}">${renderedParagraphs}</div>`
+  }).join('')
+
+  // Інлайнимо стилі через <style>, бо EpisodeBody рендерить чистий HTML
+  const styles = `
+    <style>
+      .scene { margin-top: 28px; }
+      .scene-first { margin-top: 0; }
+      .scene p { margin: 0 0 14px 0; }
+      .scene p:last-child { margin-bottom: 0; }
+      .speaker { padding-left: 0; }
+      .narrative { }
+    </style>
+  `
+
+  return styles + renderedScenes
 }
