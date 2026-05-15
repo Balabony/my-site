@@ -217,7 +217,7 @@ export async function POST(req: NextRequest) {
       usedPose = poseFile.replace(/\.jpg$/, '')
       scene = fb.scene
       keyObject = fb.keyObject
-      objectOwner = fb.objectOwner
+      objectOwner = fb.objectOwner as 'self' | 'other' | null
       locationPrompt = ''
       seasonPrompt = ''
       timePrompt = GOLDEN_HOUR_LIGHTING
