@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
@@ -77,7 +77,7 @@ export default function HomePage() {
   const [freshStories, setFreshStories] = useState<Story[]>(SAMPLE_STORIES)
 
   useEffect(() => {
-    fetch('/api/series?limit=3&order=desc')
+    fetch('/api/series?limit=3&order=asc')
       .then(r => r.ok ? r.json() : Promise.reject())
       .then((rows: Array<{ id: string; number: number; season: number; title: string; cover_url: string | null; has_audio: boolean; url: string; description?: string }>) => {
         if (Array.isArray(rows) && rows.length > 0) {
