@@ -29,7 +29,6 @@ function ProtectedEmail() {
         textAlign: 'left',
       }}
     >
-      {/* CSS-obfuscated display: shown as [at]/[dot] until click */}
       <span aria-hidden={revealed}>
         {revealed
           ? `${E_USER}@${E_HOST}.${E_TLD}`
@@ -120,9 +119,68 @@ export default function Footer() {
 
         <div>
           <h4 style={{ color: '#FFFFFF', marginBottom: 16, fontSize: 18, fontWeight: 700 }}>Інклюзивність</h4>
-          <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.8)', lineHeight: 1.8 }}>
+          <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.8)', lineHeight: 1.8, marginBottom: 12 }}>
             Пільгові умови для ветеранів (УБД) та людей з інвалідністю: повний доступ за 1 грн.
           </p>
+
+          {/* NEW: Support link block with UA/EN/DE */}
+          <div style={{ marginTop: 14, paddingTop: 14, borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+            <a
+              href="/support"
+              style={{
+                display: 'inline-block', marginBottom: 10,
+                color: '#f5a623', fontSize: 16, fontWeight: 700,
+                textDecoration: 'none',
+              }}
+            >
+              ❤ Підтримати інклюзивність →
+            </a>
+            <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+              <a
+                href="/support"
+                style={{
+                  padding: '5px 12px', background: 'rgba(245,166,35,0.15)',
+                  border: '1px solid rgba(245,166,35,0.4)', borderRadius: 6,
+                  color: '#f5a623', fontSize: 13, fontWeight: 700, textDecoration: 'none',
+                  fontFamily: "'Montserrat', sans-serif",
+                }}
+              >
+                UA
+              </a>
+              <a
+                href="/support?lang=en"
+                style={{
+                  padding: '5px 12px', background: 'rgba(245,166,35,0.15)',
+                  border: '1px solid rgba(245,166,35,0.4)', borderRadius: 6,
+                  color: '#f5a623', fontSize: 13, fontWeight: 700, textDecoration: 'none',
+                  fontFamily: "'Montserrat', sans-serif",
+                }}
+              >
+                EN · Donate
+              </a>
+              <a
+                href="/support?lang=de"
+                style={{
+                  padding: '5px 12px', background: 'rgba(245,166,35,0.15)',
+                  border: '1px solid rgba(245,166,35,0.4)', borderRadius: 6,
+                  color: '#f5a623', fontSize: 13, fontWeight: 700, textDecoration: 'none',
+                  fontFamily: "'Montserrat', sans-serif",
+                }}
+              >
+                DE · Spenden
+              </a>
+            </div>
+            <a
+              href="/accessibility"
+              style={{
+                display: 'inline-block', marginTop: 10,
+                color: 'rgba(255,255,255,0.7)', fontSize: 14,
+                textDecoration: 'none', fontWeight: 500,
+              }}
+            >
+              ♿ Доступність сайту →
+            </a>
+          </div>
         </div>
 
         <div>

@@ -10,7 +10,6 @@ const FONT_SIZES = [
 ]
 
 export default function Header() {
-  const [lang, setLang]       = useState('UA')
   const [fontIdx, setFontIdx] = useState(0)
   const [eyeCare, setEyeCare] = useState(false)
   const { isNight, toggle: toggleNight } = useTheme()
@@ -49,7 +48,7 @@ export default function Header() {
     }}>
 
       {/* Logo */}
-      <a href="#" style={{
+      <a href="/" style={{
         fontFamily: "'Comfortaa', cursive", fontSize: 22, fontWeight: 700,
         color: 'var(--accent-gold)', textDecoration: 'none', flexShrink: 0,
       }}>
@@ -59,17 +58,41 @@ export default function Header() {
       {/* Right controls */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0, flexWrap: 'nowrap' }}>
 
-        {/* Language */}
-        <div className="baly-lang" style={{ display: 'flex', gap: 2 }}>
-          {['UA', 'EN', 'DE'].map(l => (
-            <button key={l} onClick={() => setLang(l)} style={{
-              fontSize: 10, fontWeight: 700, padding: '4px 7px',
+        {/* Language switcher — links to /support with corresponding lang */}
+        <div style={{ display: 'flex', gap: 2 }}>
+          <a
+            href="/"
+            title="Українська · головна"
+            style={{
+              fontSize: 11, fontWeight: 700, padding: '5px 8px',
               border: '1px solid var(--border)', borderRadius: 6,
-              background: lang === l ? 'var(--dark)' : 'transparent',
-              color: lang === l ? '#fff' : 'var(--muted)', cursor: 'pointer',
-              fontFamily: "'Montserrat', sans-serif"
-            }}>{l}</button>
-          ))}
+              background: 'var(--dark)', color: '#fff',
+              textDecoration: 'none', fontFamily: "'Montserrat', sans-serif",
+              lineHeight: 1, display: 'inline-block',
+            }}
+          >UA</a>
+          <a
+            href="/support?lang=en"
+            title="English — Donate page"
+            style={{
+              fontSize: 11, fontWeight: 700, padding: '5px 8px',
+              border: '1px solid var(--border)', borderRadius: 6,
+              background: 'transparent', color: 'var(--muted)',
+              textDecoration: 'none', fontFamily: "'Montserrat', sans-serif",
+              lineHeight: 1, display: 'inline-block',
+            }}
+          >EN</a>
+          <a
+            href="/support?lang=de"
+            title="Deutsch — Spendenseite"
+            style={{
+              fontSize: 11, fontWeight: 700, padding: '5px 8px',
+              border: '1px solid var(--border)', borderRadius: 6,
+              background: 'transparent', color: 'var(--muted)',
+              textDecoration: 'none', fontFamily: "'Montserrat', sans-serif",
+              lineHeight: 1, display: 'inline-block',
+            }}
+          >DE</a>
         </div>
 
         {/* Eye Care */}
