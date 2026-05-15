@@ -70,7 +70,7 @@ const IPHONE_STEPS: React.ReactNode[] = [
 
 const viewAllLinkStyle: React.CSSProperties = { display: 'inline-block', color: '#f5a623', textDecoration: 'none', fontSize: 15, fontWeight: 600, fontFamily: "'Montserrat', sans-serif" }
 
-const viewAllWrapperStyle: React.CSSProperties = { maxWidth: 1100, margin: '0 auto', padding: '4px 20px 24px', textAlign: 'right' }
+const viewAllWrapperStyle: React.CSSProperties = { maxWidth: 1100, margin: '0 auto', padding: '4px 20px 24px', textAlign: 'center' }
 
 export default function HomePage() {
   const [seriesData,   setSeriesData]   = useState<SeriesCard[]>(FALLBACK_SERIES)
@@ -405,4 +405,6 @@ export default function HomePage() {
     </ThemeProvider>
   )
 }
+
+
 
