@@ -30,18 +30,10 @@ export default function FairytalesSection() {
         <p style={{
           fontSize: 'clamp(14px, 2.5vw, 17px)',
           color: '#94a3b8',
-          margin: '0 0 8px',
+          margin: 0,
           lineHeight: 1.6
         }}>
-          Українські народні казки для дітей та дорослих
-        </p>
-        <p style={{
-          fontSize: 14,
-          color: '#64748b',
-          margin: 0,
-          fontStyle: 'italic'
-        }}>
-          Готуємо колекцію аудіоказок. Слідкуй за оновленнями.
+          Українські казки
         </p>
       </div>
     </section>

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect, useRef } from 'react';
 
@@ -745,9 +745,10 @@ export default function AccessibilityPage() {
 
         <footer className="a11y-footer" role="contentinfo">
           <p>© 2026 «Балабони» — серіал коротких відеороликів про живу українську мову</p>
-          <p>ФОП Хомин Б.І. · м. Львів · Реалізується за підтримки Мінкультури України</p>
+          <p>ФОП Хомин Б.І. · м. Львів</p>
         </footer>
       </div>
     </>
   );
 }
+

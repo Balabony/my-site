@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
@@ -299,7 +299,7 @@ export default function HomePage() {
         </div>
 
         <div style={{ background: '#1a2035', border: '1.5px solid #f5a623', borderRadius: 16, padding: 28, marginBottom: 56 }}>
-          <h4 style={{ fontSize: 16, fontWeight: 700, color: '#f5f0e8', marginBottom: 8, textAlign: 'center' }}>
+          <h4 style={{ fontSize: 20, fontWeight: 700, color: '#f5f0e8', marginBottom: 8, textAlign: 'center' }}>
             Завжди під рукою
           </h4>
           <p style={{ fontSize: 16, color: '#8899bb', textAlign: 'center', marginBottom: 24 }}>
@@ -405,3 +405,4 @@ export default function HomePage() {
     </ThemeProvider>
   )
 }
+
