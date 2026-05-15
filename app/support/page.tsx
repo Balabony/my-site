@@ -1100,7 +1100,7 @@ function UkrainianContent({
   copiedField: string | null;
   copyToClipboard: (text: string, key: string) => void;
   selectedAmount: number | null;
-  setSelectedAmount: (n: number) => void;
+  setSelectedAmount: (n: number | null) => void;
   customAmount: string;
   setCustomAmount: (s: string) => void;
   fullDetails: string;
