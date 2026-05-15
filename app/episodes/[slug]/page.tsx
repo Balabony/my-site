@@ -196,16 +196,7 @@ function formatEpisodeText(raw: string): string {
   }).join('')
 
   // Інлайнимо стилі через <style>, бо EpisodeBody рендерить чистий HTML
-  const styles = `
-    <style>
-      .scene { margin-top: 28px; }
-      .scene-first { margin-top: 0; }
-      .scene p { margin: 0 0 14px 0; }
-      .scene p:last-child { margin-bottom: 0; }
-      .speaker { padding-left: 0; }
-      .narrative { }
-    </style>
-  `
+  const styles = `<style>.scene{margin-top:28px}.scene-first{margin-top:0}.scene p{margin:0 0 14px 0}.scene p:last-child{margin-bottom:0}.speaker{padding-left:0}.narrative{}</style>`
 
   return styles + renderedScenes
 }
