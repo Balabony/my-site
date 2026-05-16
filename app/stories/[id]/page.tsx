@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation'
+﻿import { notFound } from 'next/navigation'
 import { getSupabaseAdmin } from '@/lib/supabase-server'
 import type { Metadata } from 'next'
 
@@ -73,7 +73,7 @@ export default async function StoryPage({ params }: { params: Promise<{ id: stri
       {story.cover_url && (
         <div style={{ position: 'relative', height: 320, overflow: 'hidden' }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={story.cover_url} alt={story.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+          <img src={story.cover_url} alt={story.title} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%', display: 'block' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, #0a1628 0%, rgba(10,22,40,0.4) 60%, transparent 100%)' }} />
         </div>
       )}
