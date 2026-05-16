@@ -82,7 +82,7 @@ export default function FairytalesSection() {
               }}
             >
               {/* Cover */}
-              <div style={{ width: '100%', height: 175, overflow: 'hidden', background: '#000' }}>
+              <div style={{ width: '100%', aspectRatio: '4 / 3', overflow: 'hidden', background: '#000' }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={t.coverUrl}
@@ -130,3 +130,4 @@ export default function FairytalesSection() {
     </section>
   )
 }
+
