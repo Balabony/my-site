@@ -52,3 +52,11 @@ covers-progress.json
 update-covers.sql
 episodes-export/
 *.backup
+
+
+# === Working files (session v13) ===
+admin_audit.txt
+api_audit.txt
+parochka-search.json
+search.json
+submissions_check.json
