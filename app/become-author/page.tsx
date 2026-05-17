@@ -50,7 +50,7 @@ function StepItem({ num, children }: { num: number; children: React.ReactNode })
 function ProtectedEmail() {
   const [revealed, setRevealed] = useState(false)
   const [copied, setCopied] = useState(false)
-  const E_USER = 'nazar', E_HOST = 'balabony', E_TLD = 'com'
+  const E_USER = 'nazar', E_HOST = 'balabony', E_TLD = 'net'
   const full = `${E_USER}@${E_HOST}.${E_TLD}`
 
   const handle = async () => {

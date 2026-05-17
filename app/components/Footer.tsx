@@ -5,7 +5,7 @@ import { useState } from 'react'
 // Email parts stored split — bots can't easily reconstruct from source
 const E_USER = 'nazar'
 const E_HOST = 'balabony'
-const E_TLD  = 'com'
+const E_TLD  = 'net'
 
 function ProtectedEmail() {
   const [revealed, setRevealed] = useState(false)

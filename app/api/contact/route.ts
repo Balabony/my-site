@@ -53,7 +53,7 @@ export async function POST(req: NextRequest) {
     const resend = new Resend(process.env.RESEND_API_KEY)
     await resend.emails.send({
       from: 'Balabony Contact <contact@balabony.com>',
-      to: 'nazar@balabony.com',
+      to: 'admin@balabony.com',
       replyTo: email,
       subject: `[${topic}] від ${name}`,
       html: `
