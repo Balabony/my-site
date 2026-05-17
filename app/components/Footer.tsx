@@ -217,6 +217,50 @@ export default function Footer() {
         </div>
       </div>
 
+      {/* NEW: About Balabony / ICS Lviv mission block */}
+      <div style={{
+        maxWidth: 1100, margin: '0 auto 32px',
+        padding: '24px 24px',
+        background: 'rgba(245,166,35,0.06)',
+        border: '1px solid rgba(245,166,35,0.18)',
+        borderRadius: 12,
+      }}>
+        <h4 style={{
+          color: '#f5a623', marginBottom: 12, fontSize: 16, fontWeight: 700,
+          fontFamily: "'Montserrat', sans-serif", letterSpacing: '0.3px',
+          textTransform: 'uppercase',
+        }}>
+          Про Балабонів
+        </h4>
+        <p style={{
+          fontSize: 15, lineHeight: 1.7, color: 'rgba(255,255,255,0.85)',
+          marginBottom: 12, fontFamily: "'Montserrat', sans-serif",
+        }}>
+          Балабони — освітня платформа{' '}
+          <a
+            href="https://lvivdim.com/pages/pro-nas"
+            target="_blank"
+            rel="noreferrer"
+            style={{ color: '#f5a623', textDecoration: 'underline', fontWeight: 600 }}
+          >
+            ЛОГО «Інститут громадянського суспільства»
+          </a>{' '}
+          (Львів, з 2005 року). Ми відновлюємо грамотність українських дітей, постраждалих від війни,
+          через літературу, аудіо та ШІ-тьюторинг — безкоштовно для дітей ВПО, ветеранських родин,
+          дітей з інвалідністю та дітей зі звільнених громад.
+        </p>
+        <p style={{
+          fontSize: 13, lineHeight: 1.6, color: 'rgba(255,255,255,0.55)',
+          margin: 0, fontStyle: 'italic',
+          fontFamily: "'Montserrat', sans-serif",
+        }}>
+          Balabony is an educational platform by the Institute of Civil Society (Lviv, est. 2005).
+          We restore literacy for Ukrainian children affected by war through literature, audio and
+          AI tutoring — free of charge for IDP children, veterans&apos; families, children with
+          disabilities, and children from liberated communities.
+        </p>
+      </div>
+
       <div style={{
         borderTop: '1px solid rgba(255,255,255,0.15)', paddingTop: 28, textAlign: 'center',
         fontSize: 14, color: 'rgba(255,255,255,0.6)', maxWidth: 1100, margin: '0 auto'
