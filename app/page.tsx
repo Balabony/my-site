@@ -15,6 +15,7 @@ import ResumeBanner from './components/ResumeBanner'
 import { ThemeProvider } from './context/ThemeContext'
 import SeriesStrip, { type SeriesCard } from './components/SeriesStrip'
 import FreshStoriesGrid, { type Story } from './components/FreshStoriesGrid'
+import InclusivitySection from './components/InclusivitySection'
 
 const FALLBACK_SERIES: SeriesCard[] = []
 
@@ -129,124 +130,9 @@ export default function HomePage() {
         <div id="fairytales"><FairytalesSection /></div>
 
         {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-        {/* БАНЕР: Підтримайте інклюзивність                              */}
+        {/* ІНКЛЮЗИВНІСТЬ                                                  */}
         {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-        <div style={{
-          background: 'linear-gradient(135deg, #0f1e3a 0%, #1a2f4a 100%)',
-          border: '1.5px solid #f5a623',
-          borderRadius: 16,
-          padding: 32,
-          marginTop: 32,
-          marginBottom: 40,
-          position: 'relative',
-          overflow: 'hidden',
-        }}>
-          {/* Декоративне серце справа зверху */}
-          <div style={{
-            position: 'absolute',
-            top: -20,
-            right: -20,
-            width: 160,
-            height: 160,
-            opacity: 0.06,
-            pointerEvents: 'none',
-          }}>
-            <svg viewBox="0 0 100 100" fill="#f5a623">
-              <path d="M50 88 C50 88 12 62 12 36 C12 22 22 14 32 14 C40 14 46 18 50 26 C54 18 60 14 68 14 C78 14 88 22 88 36 C88 62 50 88 50 88 Z"/>
-            </svg>
-          </div>
-
-          <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 18, position: 'relative' }}>
-            <div style={{
-              width: 56, height: 56, borderRadius: 14,
-              background: '#1a2f4a',
-              border: '1.5px solid rgba(245,166,35,0.4)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              flexShrink: 0,
-            }}>
-              <svg width="30" height="30" viewBox="0 0 100 100" fill="none">
-                <path d="M50 86 C50 86 14 62 14 38 C14 24 24 16 34 16 C42 16 46 20 50 28 C54 20 58 16 66 16 C76 16 86 24 86 38 C86 62 50 86 50 86 Z"
-                  stroke="#f5a623" strokeWidth="3" fill="rgba(245,166,35,0.15)" strokeLinejoin="round"/>
-              </svg>
-            </div>
-            <div style={{ fontSize: 22, fontWeight: 700, color: '#f5f0e8', fontFamily: "'Montserrat', Arial, sans-serif", lineHeight: 1.25 }}>
-              Підтримайте інклюзивність «Балабонів»
-            </div>
-          </div>
-
-          <p style={{
-            fontSize: 16,
-            color: 'rgba(255,255,255,0.85)',
-            lineHeight: 1.7,
-            marginBottom: 16,
-            position: 'relative',
-          }}>
-            Ми розробляємо платформу так, щоб нею могли користуватися люди з порушеннями зору, з дислексією та з труднощами читання. Це непросто й коштує часу. Ваша підтримка робить «Балабонів» доступними для всіх.
-          </p>
-
-          <p style={{
-            fontSize: 15,
-            color: 'rgba(245,166,35,0.95)',
-            lineHeight: 1.6,
-            marginBottom: 24,
-            fontWeight: 600,
-            position: 'relative',
-          }}>
-            💛 Для учасників бойових дій (УБД) — безкоштовний доступ до всього контенту.
-          </p>
-
-          <Link
-            href="/support"
-            style={{
-              display: 'block',
-              width: '100%',
-              padding: '16px 28px',
-              background: 'var(--accent-gold, #f5a623)',
-              color: '#fff',
-              borderRadius: 10,
-              fontWeight: 700,
-              fontSize: 17,
-              textDecoration: 'none',
-              textAlign: 'center',
-              fontFamily: "'Montserrat', sans-serif",
-              boxShadow: '0 4px 16px rgba(245,166,35,0.25)',
-              position: 'relative',
-            }}
-          >
-            Підтримати →
-          </Link>
-
-          <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            gap: 10,
-            marginTop: 18,
-            flexWrap: 'wrap',
-            position: 'relative',
-          }}>
-            <Link href="/support" style={{
-              fontSize: 14, color: '#8899bb', textDecoration: 'none',
-              fontFamily: "'Montserrat', sans-serif", padding: '4px 10px',
-            }}>
-              UA
-            </Link>
-            <span style={{ color: 'rgba(255,255,255,0.2)' }}>·</span>
-            <Link href="/support?lang=en" style={{
-              fontSize: 14, color: '#8899bb', textDecoration: 'none',
-              fontFamily: "'Montserrat', sans-serif", padding: '4px 10px',
-            }}>
-              EN · Donate
-            </Link>
-            <span style={{ color: 'rgba(255,255,255,0.2)' }}>·</span>
-            <Link href="/support?lang=de" style={{
-              fontSize: 14, color: '#8899bb', textDecoration: 'none',
-              fontFamily: "'Montserrat', sans-serif", padding: '4px 10px',
-            }}>
-              DE · Spenden
-            </Link>
-          </div>
-        </div>
+        <InclusivitySection />
         {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
 
         <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.15)', margin: '20px 0' }} />
