@@ -192,8 +192,8 @@ export default function PwaSection() {
       {/* ━━━━━ Instructions ━━━━━ */}
       <div className="pwa-instructions">
         <div className="pwa-col">
-          <div className="pwa-col-title">Android · Chrome</div>
-          {ANDROID_STEPS.map((step, i) => (
+          <div className="pwa-col-title">iPhone · Safari</div>
+          {IPHONE_STEPS.map((step, i) => (
             <div key={i} className="pwa-step">
               <span className="pwa-step-num">{i + 1}</span>
               <span className="pwa-step-text">{step}</span>
@@ -201,8 +201,8 @@ export default function PwaSection() {
           ))}
         </div>
         <div className="pwa-col">
-          <div className="pwa-col-title">iPhone · Safari</div>
-          {IPHONE_STEPS.map((step, i) => (
+          <div className="pwa-col-title">Android · Chrome</div>
+          {ANDROID_STEPS.map((step, i) => (
             <div key={i} className="pwa-step">
               <span className="pwa-step-num">{i + 1}</span>
               <span className="pwa-step-text">{step}</span>
@@ -600,8 +600,8 @@ export default function PwaSection() {
           animation: pwaPulseGlow 2s ease-in-out infinite;
         }
         .pwa-android-menu-dot {
-          width: 2.5px;
-          height: 2.5px;
+          width: 4px;
+          height: 4px;
           background: #fff;
           border-radius: 50%;
           z-index: 2;
