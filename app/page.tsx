@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
@@ -16,6 +16,7 @@ import { ThemeProvider } from './context/ThemeContext'
 import SeriesStrip, { type SeriesCard } from './components/SeriesStrip'
 import FreshStoriesGrid, { type Story } from './components/FreshStoriesGrid'
 import InclusivitySection from './components/InclusivitySection'
+import BonusSection from './components/BonusSection'
 
 const FALLBACK_SERIES: SeriesCard[] = []
 
@@ -137,52 +138,7 @@ export default function HomePage() {
 
         <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.15)', margin: '20px 0' }} />
 
-        <div style={{
-          background: '#0f1e3a', border: '1.5px solid #f5a623', borderRadius: 16,
-          padding: 28, marginBottom: 40
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 20 }}>
-            <div style={{ width: 56, height: 56, borderRadius: 14, background: '#1a2f4a', border: '1.5px solid rgba(245,166,35,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-              <svg width="28" height="28" viewBox="0 0 56 56" fill="none">
-                <rect x="8" y="24" width="40" height="24" rx="3" stroke="#f5a623" strokeWidth="2" fill="none"/>
-                <rect x="8" y="15" width="40" height="11" rx="3" stroke="#f5a623" strokeWidth="2" fill="none"/>
-                <line x1="28" y1="15" x2="28" y2="48" stroke="#f5a623" strokeWidth="2"/>
-                <path d="M28 15 C28 15 20 13 19 9 C18 6 22 5 24 7 C26 9 28 15 28 15" stroke="#f5a623" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
-                <path d="M28 15 C28 15 36 13 37 9 C38 6 34 5 32 7 C30 9 28 15 28 15" stroke="#f5a623" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
-              </svg>
-            </div>
-            <div style={{ fontSize: 20, fontWeight: 700, color: '#f5f0e8', fontFamily: "'Montserrat', Arial, sans-serif" }}>Бонусна програма</div>
-          </div>
-          <ul style={{ listStyle: 'none', padding: 0, marginBottom: 24 }}>
-            {[
-              'Запроси друга — ви обидва отримаєте по 50 бонусів',
-              'Поділись історією — 10 бонусів за кожен шерінг',
-              'Залиш відгук — 10 бонусів за кожен коментар',
-              'Пройди опитування — 50 бонусів',
-            ].map(line => (
-              <li key={line} style={{ fontSize: 16, color: 'rgba(255,255,255,0.85)', marginBottom: 10, lineHeight: 1.6, display: 'flex', alignItems: 'center', gap: 10 }}>
-                <span style={{ color: '#f5a623', fontWeight: 700, flexShrink: 0 }}>✓</span>{line}
-              </li>
-            ))}
-          </ul>
-          <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: 20 }}>
-            <p style={{ fontSize: 14, color: '#8899bb', marginBottom: 16, textAlign: 'center' }}>
-              Запроси друга — отримайте обидва по 50 бонусних балів на рахунок.
-            </p>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, flexWrap: 'wrap' }}>
-              <input
-                type="text" readOnly defaultValue="balabony.com/ref?user123"
-                onClick={e => (e.target as HTMLInputElement).select()}
-                style={{ padding: '8px 14px', borderRadius: 8, border: '0.5px solid rgba(255,255,255,0.15)', fontSize: 13, width: 220, background: 'rgba(255,255,255,0.06)', color: '#f5f0e8', fontFamily: "'Montserrat', sans-serif" }}
-              />
-              <button
-                onClick={() => navigator.clipboard?.writeText('balabony.com/ref?user123')}
-                style={{ padding: '8px 16px', background: 'var(--accent-gold)', color: '#fff', border: 'none', borderRadius: 8, fontWeight: 700, cursor: 'pointer', fontFamily: "'Montserrat', sans-serif", fontSize: 13 }}>
-                Скопіювати
-              </button>
-            </div>
-          </div>
-        </div>
+        <BonusSection />
 
         <div style={{ background: '#1a2035', border: '1.5px solid #f5a623', borderRadius: 16, padding: 28, marginBottom: 56 }}>
           <h4 style={{ fontSize: 20, fontWeight: 700, color: '#f5f0e8', marginBottom: 8, textAlign: 'center' }}>
