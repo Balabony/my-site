@@ -1080,15 +1080,92 @@ export default function LongevityClubSection() {
     { id: 'durak', label: 'Дурак', desc: 'Карткова гра', svg: <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><g transform="rotate(-15 20 34)"><rect x="12" y="8" width="16" height="24" rx="2.5" fill="rgba(212,160,23,0.15)" stroke="#D4A017" strokeWidth="1.2"/><text x="20" y="24" textAnchor="middle" fill="#ef4444" fontSize="14">♥</text></g><g transform="rotate(10 20 34)"><rect x="12" y="8" width="16" height="24" rx="2.5" fill="rgba(20,30,50,0.92)" stroke="rgba(245,243,238,0.3)" strokeWidth="1.2"/><text x="20" y="24" textAnchor="middle" fill="#D4A017" fontSize="14">♠</text></g></svg> },
     { id: 'poker', label: 'Покер', desc: 'П\'ять карт', svg: <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><g transform="rotate(-20 20 34)"><rect x="13" y="9" width="14" height="21" rx="2" fill="rgba(212,160,23,0.15)" stroke="#D4A017" strokeWidth="1.1"/><text x="20" y="23" textAnchor="middle" fill="#ef4444" fontSize="12">♦</text></g><rect x="13" y="9" width="14" height="21" rx="2" fill="rgba(212,160,23,0.22)" stroke="#D4A017" strokeWidth="1.2"/><text x="20" y="23" textAnchor="middle" fill="#D4A017" fontSize="12">♠</text><g transform="rotate(20 20 34)"><rect x="13" y="9" width="14" height="21" rx="2" fill="rgba(212,160,23,0.15)" stroke="#D4A017" strokeWidth="1.1"/><text x="20" y="23" textAnchor="middle" fill="#ef4444" fontSize="12">♥</text></g></svg> },
     { id: 'puzzles', label: 'Пазли', desc: '50 картинок', svg: <svg width="40" height="40" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="6" width="36" height="36" rx="3" fill="none" stroke="#D4A017" strokeWidth="1.5" strokeDasharray="2 2" opacity="0.5"/><path d="M8 8 L18 8 L18 11 Q18 14 21 14 Q24 14 24 11 L24 8 L24 22 L21 22 Q18 22 18 19 L8 19 Z" fill="#D4A017"/><path d="M26 8 L40 8 L40 19 L37 19 Q34 19 34 22 L26 22 Z" fill="#D4A017" opacity="0.85"/><path d="M8 21 L18 21 Q18 24 21 24 Q24 24 24 21 L24 38 Q24 40 22 40 L8 40 Z" fill="#D4A017" opacity="0.7"/><g transform="translate(28 26) rotate(15)"><path d="M0 0 L12 0 L12 4 Q12 7 15 7 Q18 7 18 4 L18 0 L18 14 L15 14 Q12 14 12 11 L0 11 Z" fill="#D4A017" opacity="0.95"/></g></svg> },
+    { id: 'letters', label: 'Склади слово', desc: 'Складай слова', svg: <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="2" y="14" width="11" height="11" rx="2" fill="rgba(212,160,23,0.2)" stroke="#D4A017" strokeWidth="1.2"/><text x="7.5" y="22" textAnchor="middle" fill="#D4A017" fontSize="9" fontWeight="700">К</text><rect x="14.5" y="14" width="11" height="11" rx="2" fill="rgba(212,160,23,0.2)" stroke="#D4A017" strokeWidth="1.2"/><text x="20" y="22" textAnchor="middle" fill="#D4A017" fontSize="9" fontWeight="700">І</text><rect x="27" y="14" width="11" height="11" rx="2" fill="rgba(212,160,23,0.2)" stroke="#D4A017" strokeWidth="1.2"/><text x="32.5" y="22" textAnchor="middle" fill="#D4A017" fontSize="9" fontWeight="700">Т</text></svg> },
+    { id: 'sounds', label: 'Звуки природи', desc: 'Розпізнай за звуком', svg: <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M5 24 L9 17 L13 21 L18 11 L23 19 L29 13 L35 17" stroke="#D4A017" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/><line x1="3" y1="32" x2="37" y2="32" stroke="rgba(212,160,23,0.35)" strokeWidth="1.5" strokeLinecap="round"/><circle cx="9" cy="17" r="2" fill="#D4A017"/><circle cx="18" cy="11" r="2" fill="#D4A017"/><circle cx="29" cy="13" r="2" fill="#D4A017"/></svg> },
   ]
 
   return (
-    <section className="longevity-section" style={{ marginBottom: 56 }}>
+    <section id="games" className="longevity-section" style={{ marginBottom: 56 }}>
       <audio ref={audioRef} />
-      <style>{`.pzl-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}@media(max-width:500px){.pzl-grid{grid-template-columns:1fr}}`}</style>
+      <style>{`
+        .pzl-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+        @media(max-width:500px){.pzl-grid{grid-template-columns:1fr}}
+        @keyframes lvc-pulseGlow {
+          0%, 100% { box-shadow: 0 0 0 0 rgba(239,159,39,0.4), 0 8px 24px rgba(239,159,39,0.25); }
+          50%      { box-shadow: 0 0 0 8px rgba(239,159,39,0), 0 12px 32px rgba(239,159,39,0.45); }
+        }
+        .lvc-games-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 12px;
+        }
+        @media (max-width: 900px) { .lvc-games-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 640px) { .lvc-games-grid { grid-template-columns: repeat(2, 1fr); } }
+        .lvc-game-card {
+          background: rgba(255,255,255,0.03);
+          border: 1px solid rgba(239,159,39,0.25);
+          border-radius: 12px;
+          padding: 14px 12px;
+          min-height: 138px;
+          position: relative;
+          cursor: pointer;
+          text-align: center;
+          transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+        }
+        .lvc-game-card:hover {
+          transform: translateY(-4px);
+          border-color: #EF9F27;
+          background: rgba(239,159,39,0.08);
+        }
+        .lvc-game-card.is-soon { cursor: default; opacity: 0.7; }
+        .lvc-game-card.is-soon:hover { transform: none; }
+        .lvc-game-card.is-featured {
+          background: linear-gradient(180deg, rgba(239,159,39,0.18), rgba(239,159,39,0.06));
+          border: 1.5px solid #EF9F27;
+          animation: lvc-pulseGlow 2.8s ease-in-out infinite;
+        }
+        .lvc-game-badge {
+          position: absolute;
+          top: 8px;
+          right: 8px;
+          background: #EF9F27;
+          color: #0E1A2B;
+          font-size: 9px;
+          font-weight: 800;
+          padding: 2px 7px;
+          border-radius: 8px;
+          letter-spacing: 0.5px;
+          font-family: 'Montserrat', Arial, sans-serif;
+        }
+        .lvc-game-badge-soon {
+          background: rgba(255,255,255,0.1);
+          color: #B5D4F4;
+          border: 1px solid rgba(255,255,255,0.18);
+        }
+        .lvc-game-icon {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 10px;
+          min-height: 40px;
+        }
+        .lvc-game-title {
+          font-size: 15px;
+          font-weight: 700;
+          color: #FFFFFF;
+          line-height: 1.25;
+          margin-bottom: 4px;
+          font-family: 'Montserrat', Arial, sans-serif;
+        }
+        .lvc-game-desc {
+          font-size: 12px;
+          color: #B5D4F4;
+          line-height: 1.4;
+          font-family: 'Montserrat', Arial, sans-serif;
+        }
+      `}</style>
 
-      <div style={{ background: '#0f1e3a', border: '1.5px solid #f5a623', borderRadius: 16, padding: '22px 18px', minHeight: 420 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 18 }}>
+      <div style={{ background: 'linear-gradient(180deg, #0E1A2B 0%, #14253B 50%, #0E1A2B 100%)', border: '1.5px solid #f5a623', borderRadius: 16, padding: '22px 18px', minHeight: 420 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 22 }}>
           <div style={{ width: 56, height: 56, borderRadius: 14, background: '#1a2f4a', border: '1.5px solid rgba(245,166,35,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
             <svg width="30" height="30" viewBox="0 0 56 56" fill="none">
               <path d="M9 26 C9 20 13 18 18 18 L22 18 L26 14 L30 14 L34 18 L38 18 C43 18 47 20 47 26 L47 34 C47 38 44 40 40 40 L37 40 L33 36 L23 36 L19 40 L16 40 C12 40 9 38 9 34 Z" stroke="#f5a623" strokeWidth="2.5" fill="none" strokeLinejoin="round"/>
@@ -1099,25 +1176,36 @@ export default function LongevityClubSection() {
               <circle cx="33" cy="30" r="2.5" fill="#f5a623"/>
             </svg>
           </div>
-          <div style={{ fontSize: 20, fontWeight: 700, color: '#f5f0e8', fontFamily: "'Montserrat', Arial, sans-serif" }}>ІГРИ</div>
+          <div>
+            <div style={{ fontSize: 10, fontWeight: 700, color: '#EF9F27', letterSpacing: 2, textTransform: 'uppercase', fontFamily: "'Montserrat', Arial, sans-serif", lineHeight: 1, marginBottom: 4 }}>Розваги</div>
+            <div style={{ fontSize: 20, fontWeight: 800, color: '#FFFFFF', fontFamily: "'Montserrat', Arial, sans-serif", lineHeight: 1.2 }}>Ігри Балабонів</div>
+          </div>
         </div>
 
         {activeView === null && (
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
-            {GAME_GRID.map(g => (
-              <div key={g.id}
-                onClick={() => {
-                  if (g.id === 'voice') { setQuizType('voice'); setActiveView('voice') }
-                  else if (g.id === 'text') { setQuizType('text'); setActiveView('text') }
-                  else { if (g.id === 'puzzles') setPuzzlePick(null); setActiveView(g.id as ActiveView) }
-                }}
-                style={{ background: 'rgba(255,255,255,0.05)', border: '0.5px solid rgba(255,255,255,0.1)', borderRadius: 14, padding: '18px 12px', cursor: 'pointer', textAlign: 'center' }}
-              >
-                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 8 }}>{g.svg}</div>
-                <div style={{ fontSize: 15, color: '#f5f0e8', fontWeight: 500, fontFamily: "'Lora', serif" }}>{g.label}</div>
-                <div style={{ fontSize: 12, color: '#8899bb', marginTop: 4, fontFamily: "'Lora', serif" }}>{g.desc}</div>
-              </div>
-            ))}
+          <div className="lvc-games-grid">
+            {GAME_GRID.map(g => {
+              const isFeatured = g.id === 'voice'
+              const isSoon = g.id === 'letters' || g.id === 'sounds'
+              const cls = `lvc-game-card${isFeatured ? ' is-featured' : ''}${isSoon ? ' is-soon' : ''}`
+              return (
+                <div key={g.id}
+                  onClick={() => {
+                    if (isSoon) return
+                    if (g.id === 'voice') { setQuizType('voice'); setActiveView('voice') }
+                    else if (g.id === 'text') { setQuizType('text'); setActiveView('text') }
+                    else { if (g.id === 'puzzles') setPuzzlePick(null); setActiveView(g.id as ActiveView) }
+                  }}
+                  className={cls}
+                >
+                  {isFeatured && <span className="lvc-game-badge">NEW</span>}
+                  {isSoon && <span className="lvc-game-badge lvc-game-badge-soon">СКОРО</span>}
+                  <div className="lvc-game-icon">{g.svg}</div>
+                  <div className="lvc-game-title">{g.label}</div>
+                  <div className="lvc-game-desc">{g.desc}</div>
+                </div>
+              )
+            })}
           </div>
         )}
 
