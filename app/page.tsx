@@ -5,7 +5,6 @@ import Link from 'next/link'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import ReaderSection from './components/ReaderSection'
-import PlatformsSection from './components/PlatformsSection'
 import PricingSection from './components/PricingSection'
 import AudioPlayer from './components/AudioPlayer'
 import Footer from './components/Footer'
@@ -84,11 +83,8 @@ export default function HomePage() {
       <main style={{ maxWidth: 1100, margin: '0 auto', padding: '24px 20px 0' }}>
 
         <ReaderSection />
-        <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.15)', margin: '20px 0' }} />
-        <PlatformsSection />
-        <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.15)', margin: '20px 0' }} />
+
         <PricingSection />
-        <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.15)', margin: '20px 0' }} />
         <div id="longevity-club"><LongevityClubSection /></div>
         <div id="fairytales"><FairytalesSection /></div>
 
@@ -97,23 +93,11 @@ export default function HomePage() {
         {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
         <InclusivitySection />
         {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-
-        <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.15)', margin: '20px 0' }} />
-
         <BonusSection />
 
         <PwaSection />      <ChannelsSection />
-
-        <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.15)', margin: '20px 0' }} />
-
         <AuthorSection />
-
-        <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.15)', margin: '20px 0' }} />
-
         <SurveyPreviewSection />
-
-        <hr style={{ border: 'none', borderTop: '1px solid rgba(255,255,255,0.15)', margin: '20px 0' }} />
-
       </main>
 
       <Footer />
@@ -121,6 +105,4 @@ export default function HomePage() {
     </ThemeProvider>
   )
 }
-
-
 
